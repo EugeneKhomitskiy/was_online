@@ -18,16 +18,34 @@ fun agoToText(timeSec: Int): String {
 }
 
 fun minutes(timeSec: Int): String {
+    val timeMin = timeSec / 60
+    return when {
+        timeMin % 10 in 2..4 && timeMin % 100 !in 11..19 -> "$timeMin минуты"
+        timeMin % 10 == 1 && timeMin % 100 != 11 -> "$timeMin минуту"
+        else -> "$timeMin минут"
+    }
+}
+
+fun hours(timeSec: Int): String {
+    val timeHour = timeSec / 3600
+    return when {
+        timeHour % 10 in 2..4 && timeHour % 100 !in 11..19 -> "$timeHour часа"
+        timeHour % 10 == 1 && timeHour % 100 != 11 -> "$timeHour час"
+        else -> "$timeHour часов"
+    }
+}
+
+/*fun minutes(timeSec: Int): String {
     val timeMin = timeSec/60
     return if (timeMin % 10 in 2..4 && timeMin % 100 !in 11..19) "$timeMin минуты"
     else if (timeMin % 10 == 1 && timeMin % 100 != 11) "$timeMin минуту"
     else "$timeMin минут"
-}
+}*/
 
-fun hours(timeSec: Int): String {
+/*fun hours(timeSec: Int): String {
     val timeHour = timeSec/3600
     return if (timeHour % 10 in 2..4 && timeHour % 100 !in 11..19) "$timeHour часа"
     else if (timeHour % 10 == 1 && timeHour % 100 != 11) "$timeHour час"
     else "$timeHour часов"
-}
+}*/
 
